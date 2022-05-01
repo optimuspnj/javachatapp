@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2022 11:35:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernatepojos.User" table="user" catalog="javachatapp" optimistic-lock="version">
+        <id name="userUsername" type="string">
+            <column name="user_username" length="64" />
+            <generator class="assigned" />
+        </id>
+        <property name="userPassword" type="string">
+            <column name="user_password" length="32" />
+        </property>
+        <property name="userEmail" type="string">
+            <column name="user_email" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="userNickname" type="string">
+            <column name="user_nickname" length="100" />
+        </property>
+        <property name="userProfilepic" type="string">
+            <column name="user_profilepic" />
+        </property>
+        <property name="userType" type="string">
+            <column name="user_type" length="5" />
+        </property>
+    </class>
+</hibernate-mapping>
