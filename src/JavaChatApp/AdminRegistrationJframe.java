@@ -412,7 +412,7 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
     }
     
     //Method for resizing and copying profile pic (It's working, ok!? :') )
-    public static void resizeCopyImage(String imagePathToRead, String imagePathToWrite) throws IOException {
+    private void resizeCopyImage(String imagePathToRead, String imagePathToWrite) throws IOException {
         
         File fileToRead = new File(imagePathToRead);
         BufferedImage bufferedImageInput = ImageIO.read(fileToRead);

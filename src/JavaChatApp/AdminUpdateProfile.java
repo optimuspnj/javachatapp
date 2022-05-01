@@ -5,6 +5,19 @@
  */
 package JavaChatApp;
 
+import hibernateconnection.Connector;
+import hibernatepojos.User;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author optimuspnj
@@ -29,27 +42,118 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Admin Update Profile");
 
+        jLabel2.setText("Username");
+
+        jLabel3.setText("Field to Update");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Password", "Email", "Nick Name", "Profile Picture", "User Type" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Update");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Clear");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setEnabled(false);
+
+        jButton3.setText("Open Image");
+        jButton3.setEnabled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(50, 50, 50)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField2)))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(162, 162, 162)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,6 +169,87 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        switch (jComboBox1.getSelectedIndex()) {
+            case 0:
+                updatePassword(jTextField1.getText(), jTextField2.getText());
+                break;
+            case 1:
+                updateEmail(jTextField1.getText(), jTextField2.getText());
+                break;
+            case 2:
+                updateNickname(jTextField1.getText(), jTextField2.getText());
+                break;
+            case 3:
+                updateProfilePicture(jTextField1.getText(), jTextField2.getText());
+                break;
+            case 4:
+                updateUserType(jTextField1.getText(), jTextField2.getText());
+                break;
+            default:
+                jLabel5.setText("Error!");
+                break;
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        switch (jComboBox1.getSelectedIndex()) {
+            case 0:
+                jTextField2.setEnabled(true);
+                jLabel4.setText("New Password");
+                break;
+            case 1:
+                jTextField2.setEnabled(true);
+                jLabel4.setText("New Email");
+                break;
+            case 2:
+                jTextField2.setEnabled(true);
+                jLabel4.setText("New Nick Name");
+                break;
+            case 3:
+                jTextField2.setEditable(false);
+                jButton3.setEnabled(true);
+                jLabel4.setText("New Profile Picture");
+                break;
+            case 4:
+                jTextField2.setEnabled(true);
+                jLabel4.setText("New User Type");
+                break;
+            default:
+                jLabel5.setText("Error!");
+                break;
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextField1.setText("");
+        jTextField2.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //When user clicks OPEN button...
+        
+        //Opening file chooser for jpg,jpeg or png files
+        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.setDialogTitle("Select an image file (jpg,jpeg & png are supported)");
+        
+        FileNameExtensionFilter restrict = new FileNameExtensionFilter("Only image files", "jpg","jpeg","png");
+        fileChooser.addChoosableFileFilter(restrict);
+        
+        int r = fileChooser.showOpenDialog(null);
+        
+        if (r == JFileChooser.APPROVE_OPTION) {
+            //Setting the grabbed path to text field
+            jTextField2.setText(fileChooser.getSelectedFile().getAbsolutePath());
+        }
+        else {
+            //If user cancells the operation, this string will set to textbox
+            jTextField2.setText("NOT_SELECTED");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,7 +287,128 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private void updatePassword(String userName, String newPassword) {
+        jLabel5.setText("");
+        
+        Session mySession = Connector.getSessionFactory().openSession();
+        Transaction myTransaction = mySession.beginTransaction();
+        
+        User user = (User)mySession.get(User.class,userName);
+        user.setUserPassword(newPassword);
+        mySession.update(user);
+        myTransaction.commit();
+        
+        jLabel5.setText("Password updated Successfully!");
+        mySession.close();
+    }
+
+    private void updateEmail(String userName, String newEmail) {
+        jLabel5.setText("");
+        
+        Session mySession = Connector.getSessionFactory().openSession();
+        Transaction myTransaction = mySession.beginTransaction();
+        
+        User user = (User)mySession.get(User.class,userName);
+        user.setUserEmail(newEmail);
+        mySession.update(user);
+        myTransaction.commit();
+        
+        jLabel5.setText("Email updated Successfully!");
+        mySession.close();
+    }
+
+    private void updateNickname(String userName, String newNickName) {
+        jLabel5.setText("");
+        
+        Session mySession = Connector.getSessionFactory().openSession();
+        Transaction myTransaction = mySession.beginTransaction();
+        
+        User user = (User)mySession.get(User.class,userName);
+        user.setUserNickname(newNickName);
+        mySession.update(user);
+        myTransaction.commit();
+        
+        jLabel5.setText("Nickname updated Successfully!");
+        mySession.close();
+    }
+
+    private void updateProfilePicture(String userName, String newProfilePicture) {
+        jLabel5.setText("");
+        
+        Session mySession = Connector.getSessionFactory().openSession();
+        Transaction myTransaction = mySession.beginTransaction();
+        
+        User user = (User)mySession.get(User.class,userName);
+        
+        //IF user prefer not to choose a profile pic, it will set default png as the profile pic otherwise... let's see
+        if (jTextField2.getText().equals("NOT_SELECTED")) {
+            //Setting default image
+            user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/default.png");
+        } else {
+            //We have to resize the image and copy it from its original location to our project derectory
+            try {
+                //Calling resizeCopyImage() function with source and destination parameteres. We are going to save the image file from user's username cz it's unique.
+                resizeCopyImage(jTextField2.getText(),"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/"+jTextField1.getText()+".jpg");
+                
+                //Now, we have to set the new path to the profile pic filed of the DB
+                user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/"+jTextField1.getText()+".jpg");
+            } catch (IOException ex) {
+                //Display if there is any error while the profile picture saving process.
+                jLabel5.setText("Error occured!");
+            }
+        }
+        
+        mySession.update(user);
+        myTransaction.commit();
+        
+        jLabel5.setText("Profile Picture updated Successfully!");
+        mySession.close();
+    }
+
+    private void updateUserType(String userName, String newUserType) {
+        jLabel5.setText("");
+        
+        Session mySession = Connector.getSessionFactory().openSession();
+        Transaction myTransaction = mySession.beginTransaction();
+        
+        User user = (User)mySession.get(User.class,userName);
+        user.setUserType(newUserType);
+        mySession.update(user);
+        myTransaction.commit();
+        
+        jLabel5.setText("Nickname updated Successfully!");
+        mySession.close();
+    }
+    
+    //Method for resizing and copying profile pic (It's working, ok!? :') )
+    private void resizeCopyImage(String imagePathToRead, String imagePathToWrite) throws IOException {
+        
+        File fileToRead = new File(imagePathToRead);
+        BufferedImage bufferedImageInput = ImageIO.read(fileToRead);
+
+        BufferedImage bufferedImageOutput = new BufferedImage(100, 100, bufferedImageInput.getType());
+
+        Graphics2D g2d = bufferedImageOutput.createGraphics();
+        g2d.drawImage(bufferedImageInput, 0, 0, 100, 100, null);
+        g2d.dispose();
+
+        String formatName = imagePathToWrite.substring(imagePathToWrite.lastIndexOf(".") + 1);
+
+        ImageIO.write(bufferedImageOutput, formatName, new File(imagePathToWrite));
+    }
 }
+
