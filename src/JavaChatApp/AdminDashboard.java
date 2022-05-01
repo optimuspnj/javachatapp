@@ -11,6 +11,7 @@ import hibernatepojos.User;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -52,6 +53,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admin Dashboard");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                AdminDashboard.this.windowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Admin Dashboard");
@@ -72,7 +79,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Update Profile");
+        jButton3.setText("Update Profiles");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -192,6 +199,15 @@ public class AdminDashboard extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void windowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosing
+        //Delete logging out user's details from DB
+        Session mySession = Connector.getSessionFactory().openSession();
+        Transaction myTransaction = mySession.beginTransaction();
+        mySession.delete(currentLogin);
+        myTransaction.commit();
+        mySession.close();
+    }//GEN-LAST:event_windowClosing
 
     /**
      * @param args the command line arguments

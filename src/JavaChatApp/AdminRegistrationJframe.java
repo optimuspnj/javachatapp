@@ -6,12 +6,15 @@
 package JavaChatApp;
 
 import hibernateconnection.Connector;
+import hibernatepojos.CurrentLogin;
 import hibernatepojos.User;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Iterator;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -28,8 +31,12 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
     /**
      * Creates new form RegistrationJframe
      */
+    
+    CurrentLogin currentLogin;
+    
     public AdminRegistrationJframe() {
         initComponents();
+        displayCurrentUser();
     }
 
     /**
@@ -60,9 +67,15 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Registration");
+        setTitle("User/Admin Registration");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                AdminRegistrationJframe.this.windowClosing(evt);
+            }
+        });
 
         jLabel1.setText("Username");
 
@@ -166,6 +179,8 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jButton1)
+                .addGap(171, 171, 171)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -174,7 +189,9 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel6)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -311,7 +328,6 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
         //Opening admin dashboard (Going back)
         AdminDashboard adminDashboard = new AdminDashboard();
         adminDashboard.setVisible(true);
@@ -322,6 +338,15 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void windowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosing
+        //Delete logging out user's details from DB
+        Session mySession = Connector.getSessionFactory().openSession();
+        Transaction myTransaction = mySession.beginTransaction();
+        mySession.delete(currentLogin);
+        myTransaction.commit();
+        mySession.close();
+    }//GEN-LAST:event_windowClosing
 
     /**
      * @param args the command line arguments
@@ -375,6 +400,7 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
@@ -427,4 +453,25 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
 
         ImageIO.write(bufferedImageOutput, formatName, new File(imagePathToWrite));
     }
+    
+     //Method for displaying current user and profile pic
+      private void displayCurrentUser() {
+           
+          //Getting current user's username from DB
+          Session mySession = Connector.getSessionFactory().openSession();
+           List userList = mySession.createQuery("from CurrentLogin").list();
+        
+           for (Iterator iterator = userList.iterator(); iterator.hasNext();) {
+                currentLogin = (CurrentLogin)iterator.next();
+           }
+           
+           //Getting user class because we need the nickname and the path to profile pic
+           User user = (User)mySession.get(User.class,currentLogin.getCurrentLoginUsername());
+           
+           //Display greeter
+           jLabel9.setText("Logged in as, " + user.getUserNickname() + " !");
+               
+           //Ending session
+           mySession.close();
+     }
 }
