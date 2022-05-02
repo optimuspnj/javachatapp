@@ -354,81 +354,101 @@ public class UserUpdateProfile extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void updatePassword(String userName, String newPassword) {
-        jLabel5.setText("");
         
-        Session mySession = Connector.getSessionFactory().openSession();
-        Transaction myTransaction = mySession.beginTransaction();
+        try {
+            jLabel5.setText("");
         
-        User user = (User)mySession.get(User.class,userName);
-        user.setUserPassword(newPassword);
-        mySession.update(user);
-        myTransaction.commit();
+            Session mySession = Connector.getSessionFactory().openSession();
+            Transaction myTransaction = mySession.beginTransaction();
         
-        jLabel5.setText("Password updated Successfully!");
-        mySession.close();
+            User user = (User)mySession.get(User.class,userName);
+            user.setUserPassword(newPassword);
+            mySession.update(user);
+            myTransaction.commit();
+        
+            jLabel5.setText("Password updated Successfully!");
+            mySession.close();
+        } catch (Exception ex) {
+            jLabel5.setText("Error! Username do not exist!");
+        }
     }
 
     private void updateEmail(String userName, String newEmail) {
-        jLabel5.setText("");
         
-        Session mySession = Connector.getSessionFactory().openSession();
-        Transaction myTransaction = mySession.beginTransaction();
+        try {
+            jLabel5.setText("");
         
-        User user = (User)mySession.get(User.class,userName);
-        user.setUserEmail(newEmail);
-        mySession.update(user);
-        myTransaction.commit();
+            Session mySession = Connector.getSessionFactory().openSession();
+            Transaction myTransaction = mySession.beginTransaction();
         
-        jLabel5.setText("Email updated Successfully!");
-        mySession.close();
+            User user = (User)mySession.get(User.class,userName);
+            user.setUserEmail(newEmail);
+            mySession.update(user);
+            myTransaction.commit();
+        
+            jLabel5.setText("Email updated Successfully!");
+            mySession.close();
+        } catch (Exception ex) {
+            jLabel5.setText("Error! Username do not exist!");
+        }
     }
 
     private void updateNickname(String userName, String newNickName) {
-        jLabel5.setText("");
         
-        Session mySession = Connector.getSessionFactory().openSession();
-        Transaction myTransaction = mySession.beginTransaction();
+        try {
+            jLabel5.setText("");
         
-        User user = (User)mySession.get(User.class,userName);
-        user.setUserNickname(newNickName);
-        mySession.update(user);
-        myTransaction.commit();
+            Session mySession = Connector.getSessionFactory().openSession();
+            Transaction myTransaction = mySession.beginTransaction();
         
-        jLabel5.setText("Nickname updated Successfully!");
-        mySession.close();
+            User user = (User)mySession.get(User.class,userName);
+            user.setUserNickname(newNickName);
+            mySession.update(user);
+            myTransaction.commit();
+        
+            jLabel5.setText("Nickname updated Successfully!");
+            mySession.close();
+        } catch (Exception ex) {
+            jLabel5.setText("Error! Username do not exist!");
+        }
     }
 
     private void updateProfilePicture(String userName, String newProfilePicture) {
-        jLabel5.setText("");
         
-        Session mySession = Connector.getSessionFactory().openSession();
-        Transaction myTransaction = mySession.beginTransaction();
+        try {
+             jLabel5.setText("");
         
-        User user = (User)mySession.get(User.class,userName);
+            Session mySession = Connector.getSessionFactory().openSession();
+            Transaction myTransaction = mySession.beginTransaction();
         
-        //IF user prefer not to choose a profile pic, it will set default png as the profile pic otherwise... let's see
-        if (newProfilePicture.equals("NOT_SELECTED")) {
-            //Setting default image
-            user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/default.png");
-        } else {
-            //We have to resize the image and copy it from its original location to our project derectory
-            try {
-                //Calling resizeCopyImage() function with source and destination parameteres. We are going to save the image file from user's username cz it's unique.
-                resizeCopyImage(newProfilePicture,"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
+            User user = (User)mySession.get(User.class,userName);
+        
+            //IF user prefer not to choose a profile pic, it will set default png as the profile pic otherwise... let's see
+            if (newProfilePicture.equals("NOT_SELECTED")) {
+                //Setting default image
+                user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/default.png");
+            } else {
+                //We have to resize the image and copy it from its original location to our project derectory
+                try {
+                    //Calling resizeCopyImage() function with source and destination parameteres. We are going to save the image file from user's username cz it's unique.
+                    resizeCopyImage(newProfilePicture,"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
                 
-                //Now, we have to set the new path to the profile pic filed of the DB
-                user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName +".jpg");
-            } catch (IOException ex) {
-                //Display if there is any error while the profile picture saving process.
-                jLabel5.setText("Error occured!");
+                    //Now, we have to set the new path to the profile pic filed of the DB
+                    user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName +".jpg");
+                } catch (IOException ex) {
+                    //Display if there is any error while the profile picture saving process.
+                    jLabel5.setText("Error occured!");
+                }
             }
+        
+            mySession.update(user);
+            myTransaction.commit();
+        
+            jLabel5.setText("Profile Picture updated Successfully! You may have to restart the app for apply changes.");
+            mySession.close();
+        } catch (Exception ex) {
+            jLabel5.setText("Error! Username do not exist!");
         }
-        
-        mySession.update(user);
-        myTransaction.commit();
-        
-        jLabel5.setText("Profile Picture updated Successfully! You may have to restart the app for apply changes.");
-        mySession.close();
     }
     
     //Method for resizing and copying profile pic (It's working, ok!? :') )
