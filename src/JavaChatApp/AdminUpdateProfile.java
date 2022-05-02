@@ -410,17 +410,17 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
         User user = (User)mySession.get(User.class,userName);
         
         //IF user prefer not to choose a profile pic, it will set default png as the profile pic otherwise... let's see
-        if (jTextField2.getText().equals("NOT_SELECTED")) {
+        if (newProfilePicture.equals("NOT_SELECTED")) {
             //Setting default image
             user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/default.png");
         } else {
             //We have to resize the image and copy it from its original location to our project derectory
             try {
                 //Calling resizeCopyImage() function with source and destination parameteres. We are going to save the image file from user's username cz it's unique.
-                resizeCopyImage(jTextField2.getText(),"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/"+jTextField1.getText()+".jpg");
+                resizeCopyImage(newProfilePicture,"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
                 
                 //Now, we have to set the new path to the profile pic filed of the DB
-                user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/"+jTextField1.getText()+".jpg");
+                user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
             } catch (IOException ex) {
                 //Display if there is any error while the profile picture saving process.
                 jLabel5.setText("Error occured!");

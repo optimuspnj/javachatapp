@@ -138,8 +138,8 @@ public class CommonLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Open user registration panel. (This do not have register an admin function. User only can create USER acounts. Not admins)
-        UserRegistrationJframe userRegistrationJframe = new UserRegistrationJframe();
-        userRegistrationJframe.setVisible(true);
+        UserRegistration userRegistration = new UserRegistration();
+        userRegistration.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

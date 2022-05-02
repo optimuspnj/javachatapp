@@ -6,7 +6,16 @@
 package JavaChatApp;
 
 import hibernateconnection.Connector;
+import hibernatepojos.CurrentLogin;
 import hibernatepojos.User;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Iterator;
+import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
@@ -17,12 +26,12 @@ import org.hibernate.Transaction;
  *
  * @author optimuspnj
  */
-public class UserRegistrationJframe extends javax.swing.JFrame {
+public class UserRegistration extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistrationJframe
      */
-    public UserRegistrationJframe() {
+    public UserRegistration() {
         initComponents();
     }
 
@@ -36,7 +45,6 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,14 +62,7 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Registration");
-
-        jButton1.setText("Back to Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        setTitle("User Registration");
 
         jLabel1.setText("Username");
 
@@ -72,6 +73,13 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
         jLabel4.setText("Nickname");
 
         jLabel5.setText("Profile Picture");
+
+        jTextField5.setText("NOT_SELECTED");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Open");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,52 +109,49 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
                         .addComponent(jButton3)
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton1))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(224, 224, 224)
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel2))
                                     .addComponent(jLabel3))
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel5))
+                                .addComponent(jLabel4)))
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jPasswordField1))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(203, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel6)
-                .addGap(31, 31, 31)
-                .addComponent(jButton1)
-                .addGap(38, 38, 38)
+                .addGap(96, 96, 96)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -163,17 +168,18 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,14 +196,9 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CommonLogin commonLogin = new CommonLogin();
-        commonLogin.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        //Setting all fields blanck on Clear button click
         jTextField1.setText("");
         jPasswordField1.setText("");
         jTextField3.setText("");
@@ -206,6 +207,10 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        //When user clicks OPEN button...
+        
+        //Opening file chooser for jpg,jpeg or png files
         JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         fileChooser.setAcceptAllFileFilterUsed(false);
         fileChooser.setDialogTitle("Select an image file (jpg,jpeg & png are supported)");
@@ -216,29 +221,71 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
         int r = fileChooser.showOpenDialog(null);
         
         if (r == JFileChooser.APPROVE_OPTION) {
+            //Setting the grabbed path to text field
             jTextField5.setText(fileChooser.getSelectedFile().getAbsolutePath());
         }
         else {
-            jTextField5.setText("No Profile Picture");
+            //If user cancells the operation, this string will set to textbox
+            jTextField5.setText("NOT_SELECTED");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        //When user clicks on Register button
+        
+        //Clear if there is any previous outputs
+        //This jLabel7 is used to displaymessages. It cannot be seen in frame because it's empty.
         jLabel7.setText("");
         
+        //Setting user details to commit to DB
         User user = new User();
         
         user.setUserUsername(jTextField1.getText());
         user.setUserNickname(jTextField4.getText());
+        
+        //Swing password fields are not Strings! they are char arrays. Just forget about the encryption and security and convert it to string :-/
         user.setUserPassword(new String(jPasswordField1.getPassword()));
+        
         user.setUserEmail(jTextField3.getText());
-        user.setUserProfilepic(jTextField5.getText());
         user.setUserType("user");
         
-        String outPut = addUser(user);
+        //Okay, Let's handle this profile pic scenario
         
-        jLabel7.setText(outPut);
+        //IF user prefer not to choose a profile pic, it will set default png as the profile pic otherwise... let's see
+        if (jTextField5.getText().equals("NOT_SELECTED")) {
+            //Setting default image
+            user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/default.png");
+        } else {
+            //We have to resize the image and copy it from its original location to our project derectory
+            try {
+                //Calling resizeCopyImage() function with source and destination parameteres. We are going to save the image file from user's username cz it's unique.
+                resizeCopyImage(jTextField5.getText(),"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/"+jTextField1.getText()+".jpg");
+                
+                //Now, we have to set the new path to the profile pic filed of the DB
+                user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/"+jTextField1.getText()+".jpg");
+            } catch (IOException ex) {
+                //Display if there is any error while the profile picture saving process.
+                jLabel7.setText("Error occured!");
+            }
+        }
+        
+        //outPut variable is for get the response of data inseretion method
+        String outPut;
+        try {
+            //Calling the addUser() function to save the user details to the DB, while saving the output to the variable
+            outPut = addUser(user);
+            //Display the status of insertion.
+            jLabel7.setText(outPut);
+        } catch (IOException ex) {
+            //We have to handle this esception because calling addUser() function may lead to IOException (totally unfortunate!), cz we are working with files.
+            jLabel7.setText("Error occured!");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,27 +304,40 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserRegistrationJframe().setVisible(true);
+                new UserRegistration().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -296,22 +356,48 @@ public class UserRegistrationJframe extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 
-    private String addUser(User user) {
-        
+    
+   //Method for commit the user info to database
+    private String addUser(User user) throws IOException {
         try {
+            //Starting session and transation
             Session mySession = Connector.getSessionFactory().openSession();
             Transaction myTransaction = mySession.beginTransaction();
         
+            //Saving and commiting changes to db and finally close the session
             mySession.save(user);
             myTransaction.commit();
             mySession.close();
         
+            //This will show to the user as SUCCESS insertion status
             return "Data Inserted!";
         
         } catch (Exception e) {
+            //If something went wrong while inserting data, we have to delete the saved profile pic. (No use of keeping it)
+            File targetDelete = new File(user.getUserProfilepic());
+            Files.delete(targetDelete.toPath());
+            
+            //This will show to the user as ERROR insertion status
             return "Error: Data cannot be inserted!";
         }
         
         
+    }
+    
+    //Method for resizing and copying profile pic (It's working, ok!? :') )
+    private void resizeCopyImage(String imagePathToRead, String imagePathToWrite) throws IOException {
+        
+        File fileToRead = new File(imagePathToRead);
+        BufferedImage bufferedImageInput = ImageIO.read(fileToRead);
+
+        BufferedImage bufferedImageOutput = new BufferedImage(100, 100, bufferedImageInput.getType());
+
+        Graphics2D g2d = bufferedImageOutput.createGraphics();
+        g2d.drawImage(bufferedImageInput, 0, 0, 100, 100, null);
+        g2d.dispose();
+
+        String formatName = imagePathToWrite.substring(imagePathToWrite.lastIndexOf(".") + 1);
+
+        ImageIO.write(bufferedImageOutput, formatName, new File(imagePathToWrite));
     }
 }

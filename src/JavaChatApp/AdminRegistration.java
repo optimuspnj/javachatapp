@@ -26,7 +26,7 @@ import org.hibernate.Transaction;
  *
  * @author optimuspnj
  */
-public class AdminRegistrationJframe extends javax.swing.JFrame {
+public class AdminRegistration extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistrationJframe
@@ -34,7 +34,7 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
     
     CurrentLogin currentLogin;
     
-    public AdminRegistrationJframe() {
+    public AdminRegistration() {
         initComponents();
         displayCurrentUser();
     }
@@ -73,7 +73,7 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
         setTitle("User/Admin Registration");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                AdminRegistrationJframe.this.windowClosing(evt);
+                AdminRegistration.this.windowClosing(evt);
             }
         });
 
@@ -365,14 +365,18 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminRegistrationJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -381,7 +385,7 @@ public class AdminRegistrationJframe extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminRegistrationJframe().setVisible(true);
+                new AdminRegistration().setVisible(true);
             }
         });
     }

@@ -11,7 +11,6 @@ import hibernatepojos.User;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -183,7 +182,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         //Create new users functionality
         
         //Open Admin Registration page
-        AdminRegistrationJframe adminRegistrationJframe = new AdminRegistrationJframe();
+        AdminRegistration adminRegistrationJframe = new AdminRegistration();
         adminRegistrationJframe.setVisible(true);
         this.setVisible(false);
         this.dispose();
