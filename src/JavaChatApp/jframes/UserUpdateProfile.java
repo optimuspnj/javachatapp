@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaChatApp;
+package JavaChatApp.jframes;
 
 import hibernateconnection.Connector;
 import hibernatepojos.CurrentLogin;
@@ -25,7 +25,7 @@ import org.hibernate.Transaction;
  *
  * @author optimuspnj
  */
-public class AdminUpdateProfile extends javax.swing.JFrame {
+public class UserUpdateProfile extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminUpdateProfile
@@ -34,9 +34,11 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     CurrentLogin currentLogin;
     //Public static variable for store current login information
     
-    public AdminUpdateProfile() {
+    public UserUpdateProfile() {
         initComponents();
         displayCurrentUser();
+        jTextField1.setText(currentLogin.getCurrentLoginUsername());
+        jTextField1.setEditable(false);
     }
 
     /**
@@ -64,21 +66,21 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Admin Update Users");
+        setTitle("User Profile Update");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                AdminUpdateProfile.this.windowClosing(evt);
+                UserUpdateProfile.this.windowClosing(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Admin Update Profile");
+        jLabel1.setText("User Update Profile");
 
         jLabel2.setText("Username");
 
         jLabel3.setText("Field to Update");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Password", "Email", "Nick Name", "Profile Picture", "User Type" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Password", "Email", "Nick Name", "Profile Picture" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -157,8 +159,8 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addComponent(jButton4))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -188,9 +190,9 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(48, 48, 48)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,9 +223,6 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             case 3:
                 updateProfilePicture(jTextField1.getText(), jTextField2.getText());
                 break;
-            case 4:
-                updateUserType(jTextField1.getText(), jTextField2.getText());
-                break;
             default:
                 jLabel5.setText("Error!");
                 break;
@@ -249,10 +248,6 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                 jTextField2.setEditable(false);
                 jButton3.setEnabled(true);
                 jLabel4.setText("New Profile Picture");
-                break;
-            case 4:
-                jTextField2.setEnabled(true);
-                jLabel4.setText("New User Type");
                 break;
             default:
                 jLabel5.setText("Error!");
@@ -299,8 +294,8 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Opening admin dashboard (Going back)
-        AdminDashboard adminDashboard = new AdminDashboard();
-        adminDashboard.setVisible(true);
+        UserDashboard userDashboard = new UserDashboard();
+        userDashboard.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -322,20 +317,21 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminUpdateProfile().setVisible(true);
+                new UserUpdateProfile().setVisible(true);
             }
         });
     }
@@ -358,6 +354,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void updatePassword(String userName, String newPassword) {
+        
         try {
             jLabel5.setText("");
         
@@ -372,11 +369,12 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             jLabel5.setText("Password updated Successfully!");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
     }
 
     private void updateEmail(String userName, String newEmail) {
+        
         try {
             jLabel5.setText("");
         
@@ -391,13 +389,14 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             jLabel5.setText("Email updated Successfully!");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
     }
 
-    private void updateNickname(String userName, String newNickName) { 
+    private void updateNickname(String userName, String newNickName) {
+        
         try {
-             jLabel5.setText("");
+            jLabel5.setText("");
         
             Session mySession = Connector.getSessionFactory().openSession();
             Transaction myTransaction = mySession.beginTransaction();
@@ -410,13 +409,14 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             jLabel5.setText("Nickname updated Successfully!");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
     }
 
     private void updateProfilePicture(String userName, String newProfilePicture) {
+        
         try {
-            jLabel5.setText("");
+             jLabel5.setText("");
         
             Session mySession = Connector.getSessionFactory().openSession();
             Transaction myTransaction = mySession.beginTransaction();
@@ -434,7 +434,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                     resizeCopyImage(newProfilePicture,"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
                 
                     //Now, we have to set the new path to the profile pic filed of the DB
-                    user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
+                    user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName +".jpg");
                 } catch (IOException ex) {
                     //Display if there is any error while the profile picture saving process.
                     jLabel5.setText("Error occured!");
@@ -444,30 +444,11 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             mySession.update(user);
             myTransaction.commit();
         
-            jLabel5.setText("Profile Picture updated Successfully! You may have to restart the app for apply changes!");
+            jLabel5.setText("Profile Picture updated Successfully! You may have to restart the app for apply changes.");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
-    }
-
-    private void updateUserType(String userName, String newUserType) { 
-        try {
-             jLabel5.setText("");
-        
-            Session mySession = Connector.getSessionFactory().openSession();
-            Transaction myTransaction = mySession.beginTransaction();
-        
-            User user = (User)mySession.get(User.class,userName);
-            user.setUserType(newUserType);
-            mySession.update(user);
-            myTransaction.commit();
-        
-            jLabel5.setText("Nickname updated Successfully!");
-            mySession.close();
-         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
-         }
     }
     
     //Method for resizing and copying profile pic (It's working, ok!? :') )
