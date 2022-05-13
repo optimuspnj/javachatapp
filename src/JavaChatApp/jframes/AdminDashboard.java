@@ -29,7 +29,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     
     public AdminDashboard() {
         initComponents();
-        displayCurrentUser(); //Display current user and profile pic on dashboard (Method call)
+        //Display current user and profile pic on dashboard (Method call)
+        displayCurrentUser(); 
     }
 
     /**

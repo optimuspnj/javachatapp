@@ -36,6 +36,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     
     public AdminUpdateProfile() {
         initComponents();
+        //Display current user info on dashboard (Method call)
         displayCurrentUser();
     }
 
@@ -208,6 +209,9 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        //Let's select what to update and call secific function according to what user selects on jComboBox
+        
         switch (jComboBox1.getSelectedIndex()) {
             case 0:
                 updatePassword(jTextField1.getText(), jTextField2.getText());
@@ -232,6 +236,9 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+        //Set input box according to what user selects
+        
         switch (jComboBox1.getSelectedIndex()) {
             case 0:
                 jTextField2.setEnabled(true);
@@ -261,6 +268,8 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Clear fields
+        
         jTextField1.setText("");
         jTextField2.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed

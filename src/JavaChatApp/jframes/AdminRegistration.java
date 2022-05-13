@@ -36,6 +36,7 @@ public class AdminRegistration extends javax.swing.JFrame {
     
     public AdminRegistration() {
         initComponents();
+        //Display current user info on dashboard (Method call)
         displayCurrentUser();
     }
 
@@ -259,6 +260,7 @@ public class AdminRegistration extends javax.swing.JFrame {
         fileChooser.setAcceptAllFileFilterUsed(false);
         fileChooser.setDialogTitle("Select an image file (jpg,jpeg & png are supported)");
         
+        //Obviously a profile picture should be an image right?
         FileNameExtensionFilter restrict = new FileNameExtensionFilter("Only image files", "jpg","jpeg","png");
         fileChooser.addChoosableFileFilter(restrict);
         

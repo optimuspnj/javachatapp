@@ -30,6 +30,8 @@ public class AdminBanUsers extends javax.swing.JFrame {
     
     public AdminBanUsers() {
         initComponents();
+        
+        //Call display current user method
         displayCurrentUser();
     }
 
@@ -161,21 +163,30 @@ public class AdminBanUsers extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
    
+        //Let's remove a user from system and erase the user data from the db
+        //Using try catch for handle the error if something terrible happens 
+        
         try {
+            //Starting session and transaction for hibernate functions
             Session mySession = Connector.getSessionFactory().openSession();
             Transaction myTransaction = mySession.beginTransaction();
         
+            //Getting username from textfield and assign it to user object to delete
             User user = (User)mySession.get(User.class,jTextField1.getText());
+            
+            //Delete and commit transaction
             mySession.delete(user);
-        
             myTransaction.commit();
             mySession.close();
             
+            //Deleting profile picture from the system
             File targetDelete = new File(user.getUserProfilepic());
             Files.delete(targetDelete.toPath());
             
+            //Notify user about the successed process
             jLabel4.setText("User banned from the system!");
         } catch (Exception ex) {
+            //Notify user about the unfortunate situation :(
             jLabel4.setText("ERROR! Username does not exist or unable to ban user!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
