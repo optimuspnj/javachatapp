@@ -20,7 +20,7 @@ public class Message {
     public Message(String messageBody, String messageUser) {
         this.messageBody = messageBody;
         
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
         LocalDateTime now = LocalDateTime.now();  
         //System.out.println(dtf.format(now)); 
         

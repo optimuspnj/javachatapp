@@ -15,9 +15,16 @@ import java.util.Observable;
 public class MessageList extends Observable{
     private final ArrayList<Message> messageList;
 
-    public MessageList() {
+    private MessageList() {
         this.messageList = new ArrayList<>();
     }
+    
+    private static final MessageList instance = new MessageList();
+    
+    public static MessageList getInstance() {
+        return instance;
+    }
+    
     
     public void addMessage(Message message) {
         messageList.add(message);

@@ -13,11 +13,11 @@ import java.util.Observer;
  *
  * @author optimuspnj
  */
-public class User implements Observer {
+public class ChatUser implements Observer {
     
     private final String name;
 
-    public User(String name) {
+    public ChatUser(String name) {
         this.name = name;
     }
 
@@ -26,10 +26,10 @@ public class User implements Observer {
         
         ArrayList<Message> messageList = (ArrayList<Message>) arg;
         
-        System.out.println("I am " + this.name + ". I'm updated! ");
+        //System.out.println("I am " + this.name + ". I'm updated! ");
         
         messageList.forEach((msg) -> {
-            System.out.println(msg.getMessageBody() + " " + msg.getMessageTime());
+            System.out.println(msg.getMessageTime() + " " +  msg.getMessageBody());
         });
     }
     
