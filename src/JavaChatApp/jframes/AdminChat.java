@@ -29,7 +29,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
      * Creates new form AdminChat
      */
     
-    MessageList messageList;
+    MessageList messageList = new MessageList();
     
     CurrentLogin currentLogin;
     //Public static variable for store current login information
@@ -37,7 +37,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
         initComponents();
         displayCurrentUser();
         
-        messageList = MessageList.getInstance();
+        
         jTextArea1.append("Chat created!\n");
         messageList.addObserver(this);
         jTextArea1.append("You added to chat!\n");

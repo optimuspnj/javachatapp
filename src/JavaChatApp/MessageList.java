@@ -13,18 +13,11 @@ import java.util.Observable;
  * @author optimuspnj
  */
 public class MessageList extends Observable{
-    private final ArrayList<Message> messageList;
+    public final ArrayList<Message> messageList;
 
-    private MessageList() {
+    public MessageList() {
         this.messageList = new ArrayList<>();
     }
-    
-    private static final MessageList instance = new MessageList();
-    
-    public static MessageList getInstance() {
-        return instance;
-    }
-    
     
     public void addMessage(Message message) {
         messageList.add(message);
