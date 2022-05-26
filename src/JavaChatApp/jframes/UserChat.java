@@ -35,7 +35,7 @@ public class UserChat extends javax.swing.JFrame implements Observer{
     public UserChat() {
         initComponents();
         displayCurrentUser();
-        
+        loadMessageHistory();
         messageList.addObserver(this);
      
     }
@@ -245,5 +245,13 @@ public class UserChat extends javax.swing.JFrame implements Observer{
         messageList.forEach((msg) -> {
             jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime()+"\n");
         });
+    }
+
+    private void loadMessageHistory() {
+        ArrayList<Message> decMessageList = messageList.getMessageList();
+        decMessageList.forEach((msg) -> {
+            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime() + "\n");
+        });
+        jTextArea2.append("\nMessage History Restored!\n\n");
     }
 }

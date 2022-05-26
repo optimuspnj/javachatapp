@@ -5,7 +5,6 @@
  */
 package JavaChatApp.jframes;
 
-import JavaChatApp.ChatListDeserialization;
 import JavaChatApp.ChatUser;
 import JavaChatApp.Message;
 import JavaChatApp.MessageList;
