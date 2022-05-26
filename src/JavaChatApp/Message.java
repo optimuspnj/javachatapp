@@ -5,6 +5,7 @@
  */
 package JavaChatApp;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -12,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author optimuspnj
  */
-public class Message {
+public class Message implements Serializable {
     private final String messageBody; 
     private final String messageUser;
     private final String messageTime;

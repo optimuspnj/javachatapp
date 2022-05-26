@@ -5,6 +5,7 @@
  */
 package JavaChatApp.jframes;
 
+import JavaChatApp.ChatListDeserialization;
 import JavaChatApp.ChatUser;
 import JavaChatApp.Message;
 import JavaChatApp.MessageList;
@@ -36,7 +37,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
     public AdminChat() {
         initComponents();
         displayCurrentUser();
-        
+        loadMessageHistory();
         
         jTextArea1.append("Chat created!\n");
         messageList.addObserver(this);
@@ -306,6 +307,23 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
+    /*private void loadMessageHistory() {
+        ChatListDeserialization chatListDeserialization = new ChatListDeserialization();
+        ArrayList<Message> decMessageList = chatListDeserialization.deSerializeMsg();
+        decMessageList.forEach((msg) -> {
+            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime()+"\n");
+        });
+        jTextArea2.append("\nMessage History Restored!\n\n");
+    }*/
+    
+    private void loadMessageHistory() {
+        ArrayList<Message> decMessageList = messageList.getMessageList();
+        decMessageList.forEach((msg) -> {
+            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime()+"\n");
+        });
+        jTextArea2.append("\nMessage History Restored!\n\n");
+    }
+    
     @Override
     public void update(Observable o, Object arg) {
         

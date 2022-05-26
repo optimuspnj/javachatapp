@@ -13,14 +13,22 @@ import java.util.Observable;
  * @author optimuspnj
  */
 public class MessageList extends Observable{
-    public final ArrayList<Message> messageList;
-
+    
+    ChatListSerialization chatListSerialization = new ChatListSerialization();
+    ChatListDeserialization chatListDeserialization = new ChatListDeserialization();
+    
+    ArrayList<Message> decMessageList = chatListDeserialization.deSerializeMsg();
+    
+    public ArrayList<Message> messageList;
+    
     public MessageList() {
-        this.messageList = new ArrayList<>();
+        //this.messageList = new ArrayList<>();
+        this.messageList = decMessageList;
     }
     
     public void addMessage(Message message) {
         messageList.add(message);
+        chatListSerialization.serializeMsg(messageList);
         setChanged();
         notifyObservers(messageList);
     }
