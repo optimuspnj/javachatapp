@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author optimuspnj
  */
-public class ChatListDeserialization {
+public class ChatHistoryDeserialization {
     public ArrayList<Message> deSerializeMsg() {
         
         ArrayList<Message> decMessageList= new ArrayList<Message>();

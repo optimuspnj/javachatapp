@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author optimuspnj
  */
-public class ChatListSerialization {
+public class ChatHistorySerialization {
     public void serializeMsg(ArrayList msgList) {
         try {
             FileOutputStream fos = new FileOutputStream("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/SerializedObjects/msgList.ser");

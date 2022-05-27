@@ -14,10 +14,10 @@ import java.util.Observable;
  */
 public class MessageList extends Observable{
     
-    ChatListSerialization chatListSerialization = new ChatListSerialization();
-    ChatListDeserialization chatListDeserialization = new ChatListDeserialization();
+    ChatHistorySerialization chatHistorySerialization = new ChatHistorySerialization();
+    ChatHistoryDeserialization chatHistoryDeserialization = new ChatHistoryDeserialization();
     
-    ArrayList<Message> decMessageList = chatListDeserialization.deSerializeMsg();
+    ArrayList<Message> decMessageList = chatHistoryDeserialization.deSerializeMsg();
     
     public ArrayList<Message> messageList;
     
@@ -28,7 +28,7 @@ public class MessageList extends Observable{
     
     public void addMessage(Message message) {
         messageList.add(message);
-        chatListSerialization.serializeMsg(messageList);
+        chatHistorySerialization.serializeMsg(messageList);
         setChanged();
         notifyObservers(messageList);
     }
