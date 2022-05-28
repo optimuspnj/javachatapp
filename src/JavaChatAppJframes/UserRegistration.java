@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaChatApp.jframes;
+package JavaChatAppJframes;
 
 import hibernateconnection.Connector;
 import hibernatepojos.User;

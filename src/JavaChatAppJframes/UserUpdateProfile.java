@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaChatApp.jframes;
+package JavaChatAppJframes;
 
 import hibernateconnection.Connector;
 import hibernatepojos.CurrentLogin;
@@ -25,7 +25,7 @@ import org.hibernate.Transaction;
  *
  * @author optimuspnj
  */
-public class AdminUpdateProfile extends javax.swing.JFrame {
+public class UserUpdateProfile extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminUpdateProfile
@@ -34,10 +34,11 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     CurrentLogin currentLogin;
     //Public static variable for store current login information
     
-    public AdminUpdateProfile() {
+    public UserUpdateProfile() {
         initComponents();
-        //Display current user info on dashboard (Method call)
         displayCurrentUser();
+        jTextField1.setText(currentLogin.getCurrentLoginUsername());
+        jTextField1.setEditable(false);
     }
 
     /**
@@ -65,21 +66,21 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Admin Update Users");
+        setTitle("User Profile Update");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                AdminUpdateProfile.this.windowClosing(evt);
+                UserUpdateProfile.this.windowClosing(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Admin Update Profile");
+        jLabel1.setText("User Update Profile");
 
         jLabel2.setText("Username");
 
         jLabel3.setText("Field to Update");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Password", "Email", "Nick Name", "Profile Picture", "User Type" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Password", "Email", "Nick Name", "Profile Picture" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -124,55 +125,59 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(50, 50, 50)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
-                                    .addComponent(jButton3)))))
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(162, 162, 162)
+                                        .addComponent(jButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addGap(50, 50, 50)
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton3))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(234, 234, 234)
                                 .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jButton4))
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(422, 422, 422)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 78, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(9, 9, 9)
-                .addComponent(jButton4)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,9 +194,8 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(48, 48, 48)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,9 +213,6 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        //Let's select what to update and call secific function according to what user selects on jComboBox
-        
         switch (jComboBox1.getSelectedIndex()) {
             case 0:
                 updatePassword(jTextField1.getText(), jTextField2.getText());
@@ -225,9 +226,6 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             case 3:
                 updateProfilePicture(jTextField1.getText(), jTextField2.getText());
                 break;
-            case 4:
-                updateUserType(jTextField1.getText(), jTextField2.getText());
-                break;
             default:
                 jLabel5.setText("Error!");
                 break;
@@ -236,9 +234,6 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        
-        //Set input box according to what user selects
-        
         switch (jComboBox1.getSelectedIndex()) {
             case 0:
                 jTextField2.setEnabled(true);
@@ -257,10 +252,6 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                 jButton3.setEnabled(true);
                 jLabel4.setText("New Profile Picture");
                 break;
-            case 4:
-                jTextField2.setEnabled(true);
-                jLabel4.setText("New User Type");
-                break;
             default:
                 jLabel5.setText("Error!");
                 break;
@@ -268,8 +259,6 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //Clear fields
-        
         jTextField1.setText("");
         jTextField2.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -308,8 +297,8 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Opening admin dashboard (Going back)
-        AdminDashboard adminDashboard = new AdminDashboard();
-        adminDashboard.setVisible(true);
+        UserDashboard userDashboard = new UserDashboard();
+        userDashboard.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -331,20 +320,21 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserUpdateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminUpdateProfile().setVisible(true);
+                new UserUpdateProfile().setVisible(true);
             }
         });
     }
@@ -367,6 +357,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void updatePassword(String userName, String newPassword) {
+        
         try {
             jLabel5.setText("");
         
@@ -381,11 +372,12 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             jLabel5.setText("Password updated Successfully!");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
     }
 
     private void updateEmail(String userName, String newEmail) {
+        
         try {
             jLabel5.setText("");
         
@@ -400,13 +392,14 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             jLabel5.setText("Email updated Successfully!");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
     }
 
-    private void updateNickname(String userName, String newNickName) { 
+    private void updateNickname(String userName, String newNickName) {
+        
         try {
-             jLabel5.setText("");
+            jLabel5.setText("");
         
             Session mySession = Connector.getSessionFactory().openSession();
             Transaction myTransaction = mySession.beginTransaction();
@@ -419,13 +412,14 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             jLabel5.setText("Nickname updated Successfully!");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
     }
 
     private void updateProfilePicture(String userName, String newProfilePicture) {
+        
         try {
-            jLabel5.setText("");
+             jLabel5.setText("");
         
             Session mySession = Connector.getSessionFactory().openSession();
             Transaction myTransaction = mySession.beginTransaction();
@@ -443,7 +437,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                     resizeCopyImage(newProfilePicture,"/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
                 
                     //Now, we have to set the new path to the profile pic filed of the DB
-                    user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName + ".jpg");
+                    user.setUserProfilepic("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/profileimages/" + userName +".jpg");
                 } catch (IOException ex) {
                     //Display if there is any error while the profile picture saving process.
                     jLabel5.setText("Error occured!");
@@ -453,30 +447,11 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             mySession.update(user);
             myTransaction.commit();
         
-            jLabel5.setText("Profile Picture updated Successfully! You may have to restart the app for apply changes!");
+            jLabel5.setText("Profile Picture updated Successfully! You may have to restart the app for apply changes.");
             mySession.close();
         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
+            jLabel5.setText("Error! Username do not exist!");
         }
-    }
-
-    private void updateUserType(String userName, String newUserType) { 
-        try {
-             jLabel5.setText("");
-        
-            Session mySession = Connector.getSessionFactory().openSession();
-            Transaction myTransaction = mySession.beginTransaction();
-        
-            User user = (User)mySession.get(User.class,userName);
-            user.setUserType(newUserType);
-            mySession.update(user);
-            myTransaction.commit();
-        
-            jLabel5.setText("Nickname updated Successfully!");
-            mySession.close();
-         } catch (Exception ex) {
-            jLabel5.setText("ERROR! Username do not exist!");
-         }
     }
     
     //Method for resizing and copying profile pic (It's working, ok!? :') )
