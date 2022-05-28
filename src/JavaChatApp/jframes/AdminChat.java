@@ -216,6 +216,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Adding user to the chat
         Session mySession = Connector.getSessionFactory().openSession();
         User user = (User)mySession.get(User.class,jTextField1.getText());
         ChatUser chatUser = new ChatUser(user.getUserUsername());
@@ -229,6 +230,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        //Sending a new message
         Message message1 = new Message(jTextField2.getText(), currentLogin.getCurrentLoginUsername());
         
         messageList.addMessage(message1);
@@ -306,15 +308,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
-    /*private void loadMessageHistory() {
-        ChatListDeserialization chatListDeserialization = new ChatListDeserialization();
-        ArrayList<Message> decMessageList = chatListDeserialization.deSerializeMsg();
-        decMessageList.forEach((msg) -> {
-            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime()+"\n");
-        });
-        jTextArea2.append("\nMessage History Restored!\n\n");
-    }*/
-    
+    //Method for grabbing and restoring message history
     private void loadMessageHistory() {
         ArrayList<Message> decMessageList = messageList.getMessageList();
         decMessageList.forEach((msg) -> {
@@ -323,6 +317,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
         jTextArea2.append("\nMessage History Restored!\n\n");
     }
     
+    //Overrided method for update chat when change is detected
     @Override
     public void update(Observable o, Object arg) {
         

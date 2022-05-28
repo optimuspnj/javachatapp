@@ -14,15 +14,25 @@ import java.util.ArrayList;
  *
  * @author optimuspnj
  */
+//This class is for serialize the Chat History (For saving it)
 public class ChatHistorySerialization {
+    //Serialization method
     public void serializeMsg(ArrayList msgList) {
+        
+        //Using Try catch for handling serialization errors (IO exception basically)
         try {
+            //Let's open a file for serialize and save the objects
             FileOutputStream fos = new FileOutputStream("/home/optimuspnj/NetBeansProjects/JavaChatApp/src/SerializedObjects/msgList.ser");
+            //Opening ObjectOutputStream
             ObjectOutputStream oos = new ObjectOutputStream(fos);
+            //Using ObjectOutputStream to write the object to the file
             oos.writeObject(msgList);
+            //Closing ObjectOutputStream
             oos.close();
+            //Closing File
             fos.close();
         } catch (IOException Ex) {
+            //Run if IO eception occurs
             System.out.println("IO Exception" + Ex);
         }
     }
