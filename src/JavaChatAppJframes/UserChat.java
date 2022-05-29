@@ -166,9 +166,9 @@ public class UserChat extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_windowClosing
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        //Opening admin dashboard (Going back)
-        AdminDashboard adminDashboard = new AdminDashboard();
-        adminDashboard.setVisible(true);
+        //Opening user dashboard (Going back)
+        UserDashboard userDashboard = new UserDashboard();
+        userDashboard.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
