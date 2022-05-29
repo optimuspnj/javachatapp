@@ -30,12 +30,11 @@ public class MessageClient {
             
             //lookup for the remote objects
              messageListHelper = (MessageListHelper) reg.lookup("messageService");
-            
-            //Invoke methods using remote objects
            
         } catch (RemoteException | NotBoundException ex) {
             Logger.getLogger(MessageClient.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //Returning remote objects
         return messageListHelper;
     }
 }

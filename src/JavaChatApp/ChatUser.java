@@ -32,7 +32,7 @@ public class ChatUser implements Observer {
         
         //Get a test output when Observable is changed
         messageList.forEach((msg) -> {
-            System.out.println(msg.getMessageTime() + " " +  msg.getMessageBody());
+            //System.out.println(msg.getMessageTime() + " " +  msg.getMessageBody());
         });
     }
     

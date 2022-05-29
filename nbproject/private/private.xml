@@ -3,30 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/ChatUser.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/Message.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/UserUpdateProfile.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/AdminDashboard.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/MessageClient.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/hibernate.cfg.xml</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/MessageListHelper.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/MessageListHelperImpl.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/AdminBanUsers.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/UserRegistration.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/ChatHistorySerialization.java</file>
             <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/CommonLogin.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/ChatHistoryDeserialization.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/AdminUpdateProfile.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/hibernatepojos/CurrentLogin.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/MessageList.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/UserDashboard.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatApp/MessageServer.java</file>
             <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/UserChat.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/hibernate.reveng.xml</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/AdminChat.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/JavaChatAppJframes/AdminRegistration.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/hibernateconnection/Connector.java</file>
-            <file>file:/home/optimuspnj/NetBeansProjects/JavaChatApp/src/hibernatepojos/User.java</file>
         </group>
     </open-files>
 </project-private>
