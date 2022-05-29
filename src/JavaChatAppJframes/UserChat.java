@@ -65,9 +65,14 @@ public class UserChat extends javax.swing.JFrame implements Observer{
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Open Sans ExtraBold", 1, 24)); // NOI18N
         jLabel3.setText("Chat");
 
+        jButton4.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton4.setText("Back to Dashboard");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +80,7 @@ public class UserChat extends javax.swing.JFrame implements Observer{
             }
         });
 
+        jButton5.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton5.setText("Send");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +88,10 @@ public class UserChat extends javax.swing.JFrame implements Observer{
             }
         });
 
+        jTextField2.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
+
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
@@ -101,7 +110,7 @@ public class UserChat extends javax.swing.JFrame implements Observer{
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(39, 39, 39)
                                     .addComponent(jButton4)
-                                    .addGap(0, 205, Short.MAX_VALUE)))
+                                    .addGap(0, 199, Short.MAX_VALUE)))
                             .addGap(67, 67, 67)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -130,7 +139,7 @@ public class UserChat extends javax.swing.JFrame implements Observer{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,14 +252,14 @@ public class UserChat extends javax.swing.JFrame implements Observer{
         ArrayList<Message> messageList = (ArrayList<Message>) arg;
         jTextArea2.setText("");
         messageList.forEach((msg) -> {
-            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime()+"\n");
+            jTextArea2.append(msg.getMessageUser()+": " + msg.getMessageTime() + " " + msg.getMessageBody() +"\n");
         });
     }
 
     private void loadMessageHistory() {
         ArrayList<Message> decMessageList = messageList.getMessageList();
         decMessageList.forEach((msg) -> {
-            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime() + "\n");
+            jTextArea2.append(msg.getMessageUser()+": " + msg.getMessageTime() + " " + msg.getMessageBody() +"\n");
         });
         jTextArea2.append("\nMessage History Restored!\n\n");
     }

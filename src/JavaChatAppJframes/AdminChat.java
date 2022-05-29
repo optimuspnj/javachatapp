@@ -75,6 +75,11 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
+
+        jButton2.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton2.setText("Add User to Chat");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,11 +87,18 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
             }
         });
 
+        jButton3.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton3.setText("Remove Users from Chat");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Open Sans ExtraBold", 1, 24)); // NOI18N
         jLabel3.setText("Chat");
 
+        jButton4.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton4.setText("Back to Dashboard");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,15 +107,18 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
         });
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jTextField1.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
+        jButton5.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton5.setText("Send");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,12 +126,17 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
             }
         });
 
+        jTextField2.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
+
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
+        jLabel2.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jLabel2.setText("System Messages:");
 
+        jLabel4.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jLabel4.setText("Chat");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -125,9 +145,6 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -142,8 +159,11 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton4)
                                     .addComponent(jLabel2))))
-                        .addGap(0, 6, Short.MAX_VALUE)))
-                .addGap(65, 65, 65)
+                        .addGap(0, 53, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField2)
@@ -160,8 +180,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(6, 6, 6)
+                        .addGap(39, 39, 39)
                         .addComponent(jButton4)
                         .addGap(47, 47, 47)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,7 +193,9 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,7 +204,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,7 +243,6 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
         Session mySession = Connector.getSessionFactory().openSession();
         User user = (User)mySession.get(User.class,jTextField1.getText());
         ChatUser chatUser = new ChatUser(user.getUserUsername());
-        System.out.println(user.getUserUsername());
         messageList.addObserver(chatUser);
         jTextArea1.append(user.getUserUsername() + " added to chat!\n");
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -237,6 +257,15 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
         
         messageList.addMessage(message1);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //Removing user from the chat
+        Session mySession = Connector.getSessionFactory().openSession();
+        User user = (User)mySession.get(User.class,jTextField1.getText());
+        ChatUser chatUser = new ChatUser(user.getUserUsername());
+        messageList.deleteObserver(chatUser);
+        jTextArea1.append(user.getUserUsername() + " Removed!\n");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,7 +345,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
     private void loadMessageHistory() {
         ArrayList<Message> decMessageList = messageList.getMessageList();
         decMessageList.forEach((msg) -> {
-            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime()+"\n");
+            jTextArea2.append(msg.getMessageUser()+": " + msg.getMessageTime() + " " + msg.getMessageBody() +"\n");
         });
         jTextArea2.append("\nMessage History Restored!\n\n");
     }
@@ -328,7 +357,7 @@ public class AdminChat extends javax.swing.JFrame implements Observer{
         ArrayList<Message> messageList = (ArrayList<Message>) arg;
         jTextArea2.setText("");
         messageList.forEach((msg) -> {
-            jTextArea2.append(msg.getMessageBody() + "\t" + msg.getMessageTime()+"\n");
+            jTextArea2.append(msg.getMessageUser()+": " + msg.getMessageTime() + " " + msg.getMessageBody() +"\n");
         });
     }
 }

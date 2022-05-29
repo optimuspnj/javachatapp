@@ -72,13 +72,20 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Open Sans ExtraBold", 1, 24)); // NOI18N
         jLabel1.setText("Admin Update Profile");
 
+        jLabel2.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jLabel2.setText("Username");
 
+        jTextField1.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jLabel3.setText("Field to Update");
 
+        jComboBox1.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Password", "Email", "Nick Name", "Profile Picture", "User Type" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +93,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton1.setText("Update");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +101,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton2.setText("Clear");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,8 +109,12 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("SF Pro", 0, 14)); // NOI18N
         jTextField2.setEnabled(false);
 
+        jButton3.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton3.setText("Open Image");
         jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +123,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("SF Pro", 1, 14)); // NOI18N
         jButton4.setText("Back to Dashboard");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +149,7 @@ public class AdminUpdateProfile extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addGap(50, 50, 50)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
